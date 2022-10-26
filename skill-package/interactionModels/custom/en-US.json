@@ -1,0 +1,333 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "test slim",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "HappySlipIntent",
+          "slots": [
+            {
+              "name": "day",
+              "type": "AMAZON.Ordinal",
+              "samples": [
+                "{day}",
+                "my birth day is the {day}"
+              ]
+            },
+            {
+              "name": "month",
+              "type": "MonthType",
+              "samples": [
+                "my birth month is {month}",
+                "{month}"
+              ]
+            },
+            {
+              "name": "year",
+              "type": "AMAZON.FOUR_DIGIT_NUMBER",
+              "samples": [
+                "my birth year is {year}",
+                "{year}"
+              ]
+            }
+          ],
+          "samples": [
+            "do you know my birthday",
+            "make a note of my birthday",
+            "my birthday is on {day} {month} {year}",
+            "remember my birthday"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "december"
+              }
+            },
+            {
+              "name": {
+                "value": "november"
+              }
+            },
+            {
+              "name": {
+                "value": "october"
+              }
+            },
+            {
+              "name": {
+                "value": "september"
+              }
+            },
+            {
+              "name": {
+                "value": "august"
+              }
+            },
+            {
+              "name": {
+                "value": "july"
+              }
+            },
+            {
+              "name": {
+                "value": "june"
+              }
+            },
+            {
+              "name": {
+                "value": "may"
+              }
+            },
+            {
+              "name": {
+                "value": "april"
+              }
+            },
+            {
+              "name": {
+                "value": "march"
+              }
+            },
+            {
+              "name": {
+                "value": "february"
+              }
+            },
+            {
+              "name": {
+                "value": "january"
+              }
+            }
+          ],
+          "name": "MonthType"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "HappySlipIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.292742391262"
+          },
+          "slots": [
+            {
+              "name": "day",
+              "type": "AMAZON.Ordinal",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.282898562539.1414513519829"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.554287821184.309300064298.1455105369319",
+                  "values": [
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "20",
+                    "21"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "month",
+              "type": "MonthType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.282898562539.496614639388"
+              }
+            },
+            {
+              "name": "year",
+              "type": "AMAZON.FOUR_DIGIT_NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.282898562539.696174562394"
+              },
+              "validations": [
+                {
+                  "type": "isGreaterThan",
+                  "prompt": "Slot.Validation.1438376833598.539472420316.1439367410385",
+                  "value": "1900"
+                },
+                {
+                  "type": "isLessThan",
+                  "prompt": "Slot.Validation.1438376833598.539472420316.643174007756",
+                  "value": "2020"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.282898562539.496614639388",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "the {day} of which month ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "ok you were born on the {day} , which month?"
+          },
+          {
+            "type": "PlainText",
+            "value": "ok you were born in {year} , what month ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "what month were you born ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "what month ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "what is your birth month ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.282898562539.696174562394",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "ok you were born in {day} {month} , which year ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "what is your birth year"
+          },
+          {
+            "type": "PlainText",
+            "value": "what year?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.282898562539.1414513519829",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "what day were you born ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "When were you born ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "ok you were born in {month} {year} , what day ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "what day of {month} were you born ?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.292742391262",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "your birthday is {day} {month} {year} , did I get that right ?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1438376833598.539472420316.1439367410385",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "not realistic, what {year}"
+          },
+          {
+            "type": "PlainText",
+            "value": "this seems to be too long ago"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1438376833598.539472420316.643174007756",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "this seems to young to be true"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.554287821184.309300064298.1455105369319",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "it\u0027s not a valid day"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "1"
+}
